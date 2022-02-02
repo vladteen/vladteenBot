@@ -11,13 +11,15 @@ public class TelegramApi {
     @RequestMapping("/telegramApi")
     public void telegram(@RequestBody String request)
     {
-        System.out.print(request);
+        System.out.println("Входящий запрос:");
+        System.out.println(request);
         var response = Unirest.post(telegramUrl + System.getenv("BOT_TOKEN") + "/sendMessage")
                 .header("accept", "application/json")
                 .field("chat_id", "202867842")
                 .field("text", "Плазма форевер")
                 .asJson();
-        System.out.print(response.getBody().toString());
+        System.out.println("Ответ на метод sendMessage:");
+        System.out.println(response.getBody().toString());
 
     }
 }
