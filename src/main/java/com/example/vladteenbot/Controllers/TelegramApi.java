@@ -1,25 +1,30 @@
 package com.example.vladteenbot.Controllers;
 
-import kong.unirest.Unirest;
+import com.pengrad.telegrambot.BotUtils;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TelegramApi {
-    final String telegramUrl = "https://api.telegram.org/bot";
+    TelegramBot bot = new TelegramBot(System.getenv("BOT_TOKEN"));
+
+
     @RequestMapping("/telegramApi")
     public void telegram(@RequestBody String request)
     {
+
         System.out.println("Входящий запрос:");
         System.out.println(request);
-        var response = Unirest.post(telegramUrl + System.getenv("BOT_TOKEN") + "/sendMessage")
-                .header("accept", "application/json")
-                .field("chat_id", "202867842")
-                .field("text", "Плазма форевер")
-                .asJson();
+        var update = BotUtils.parseUpdate(request);
+        var sendMessageRequest = new SendMessage(update.message().chat().id(), "привет, " + update.message().from().firstName())
+        .replyToMessageId(update.message().messageId());
+        var sendMessageResponse = bot.execute(sendMessageRequest);
+        var response = BotUtils.toJson(sendMessageResponse);
         System.out.println("Ответ на метод sendMessage:");
-        System.out.println(response.getBody().toString());
+        System.out.println(response);
 
     }
 }
