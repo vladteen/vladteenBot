@@ -4,10 +4,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TelegramApi {
+public class Home {
 
-    @RequestMapping("/telegramApi")
-    public void telegram()
+    @RequestMapping("/")
+    public String index()
     {
+        return "ok";
     }
 }
