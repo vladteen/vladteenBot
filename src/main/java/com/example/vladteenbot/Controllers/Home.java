@@ -9,6 +9,7 @@ public class Home {
     @RequestMapping("/")
     public String index()
     {
+        System.out.println("Сработал метод index");
         return "ok";
     }
 }
