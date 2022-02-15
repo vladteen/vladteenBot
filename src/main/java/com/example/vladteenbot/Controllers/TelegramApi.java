@@ -64,7 +64,7 @@ public class TelegramApi {
     private Keyboard GetKeyboard(){
         // Создаём объект с типом клавиатура
         var keyboard = new ReplyKeyboardMarkup(
-                new String[]{"/start", "1 строка 2 столбец"},
+                new String[]{"Начать новую игру", "1 строка 2 столбец"},
                 new String[]{"2 строка 1 столбец", "1 строка 2 столбец"}
         );
         keyboard.oneTimeKeyboard(true);
