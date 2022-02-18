@@ -28,19 +28,39 @@ public class TelegramApi {
 
         var textFromBot = "";
 
-        if (textFromUser.equals("Привет")){
-            textFromBot = "Добро пожаловать, " + userName;
-        }else if(textFromUser.equals("/start") || textFromUser.equals("Начать новую игру")){
-            textFromBot = "Новая игра началась, выберите дальнейшее действие!";
-        }else if(textFromUser.equals("/neutral")){
-            textFromBot = "Приключение началось, выберите дальнейшее действие!";
-        }else if(textFromUser.equals("/rest")){
-            textFromBot = "Даже самым лучшим войнам нужен отдых, выберите дальнейшее действие!";
-        }else if(textFromUser.equals("/battle")){
-            textFromBot = "Наконец-то достойный противник, эта схватка будет легендарной! Выберите дальнейщее действие!";
-        }else{
-            textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
+        switch (textFromUser){
+            case "Привет":
+                textFromBot = "Добро пожаловать, " + userName;
+                break;
+            case "/start":
+                textFromBot = "Новая игра началась, выберите дальнейшее действие!";
+                break;
+            case "/neutral":
+                textFromBot = "Приключение началось, выберите дальнейшее действие!";
+                break;
+            case "/rest":
+                textFromBot = "Даже самым лучшим войнам нужен отдых, выберите дальнейшее действие!";
+                break;
+            case "/battle":
+                textFromBot = "Наконец-то достойный противник, эта схватка будет легендарной! Выберите дальнейщее действие!";
+                break;
+            default:
+                textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
         }
+
+//        if (textFromUser.equals("Привет")){
+//            textFromBot = "Добро пожаловать, " + userName;
+//        }else if(textFromUser.equals("/start") || textFromUser.equals("Начать новую игру")){
+//            textFromBot = "Новая игра началась, выберите дальнейшее действие!";
+//        }else if(textFromUser.equals("/neutral")){
+//            textFromBot = "Приключение началось, выберите дальнейшее действие!";
+//        }else if(textFromUser.equals("/rest")){
+//            textFromBot = "Даже самым лучшим войнам нужен отдых, выберите дальнейшее действие!";
+//        }else if(textFromUser.equals("/battle")){
+//            textFromBot = "Наконец-то достойный противник, эта схватка будет легендарной! Выберите дальнейщее действие!";
+//        }else{
+//            textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
+//        }
 
         // Создаём объект с типом сообщение от бота
         var requestSendMessage = new SendMessage(chatId,textFromBot);
@@ -48,7 +68,7 @@ public class TelegramApi {
         if (textFromUser.equals("/start")){
             var keyboard = GetKeyboardForStart();
             requestSendMessage.replyMarkup(keyboard);
-            //textFromUser.equals("/neutral");
+            textFromUser.equals("/neutral");
         }else if (textFromUser.equals("/neutral")){
             var keyboard = GetKeyboardForNeutral();
             requestSendMessage.replyMarkup(keyboard);
