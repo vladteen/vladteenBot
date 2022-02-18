@@ -33,15 +33,19 @@ public class TelegramApi {
                 textFromBot = "Добро пожаловать, " + userName;
                 break;
             case "/start":
+            case "Начать новую игру":
                 textFromBot = "Новая игра началась, выберите дальнейшее действие!";
                 break;
             case "/neutral":
+            case "Продолжить приключение":
                 textFromBot = "Приключение началось, выберите дальнейшее действие!";
                 break;
             case "/rest":
+            case "Отдыхать":
                 textFromBot = "Даже самым лучшим войнам нужен отдых, выберите дальнейшее действие!";
                 break;
             case "/battle":
+            case "Вступить в бой!":
                 textFromBot = "Наконец-то достойный противник, эта схватка будет легендарной! Выберите дальнейщее действие!";
                 break;
             default:
@@ -100,13 +104,9 @@ public class TelegramApi {
 
     private Keyboard GetKeyboardForStart(){
         // Создаём объект с типом клавиатура
-        var keyboard = new ReplyKeyboardMarkup(
-                new String[]{"Начать новую игру", "Персонаж"},
-                new String[]{"2 строка 1 столбец", "1 строка 2 столбец"}
-        );
+        var keyboard = new ReplyKeyboardMarkup(new String[]{"Начать новую игру", "Продолжить приключение"});
         keyboard.oneTimeKeyboard(true);
         keyboard.resizeKeyboard(true);
-
         return keyboard;
     }
     private Keyboard GetKeyboardForNeutral(){
