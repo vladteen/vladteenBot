@@ -39,7 +39,6 @@ public class TelegramApi {
                     default:
                         textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
                 }
-                break;
             case "Нейтральный режим":
                 switch (textFromUser){
                     case "/rest":
