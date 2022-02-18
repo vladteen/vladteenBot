@@ -30,8 +30,14 @@ public class TelegramApi {
 
         if (textFromUser.equals("Привет")){
             textFromBot = "Добро пожаловать, " + userName;
-        }else if(textFromUser.equals("/start")){
+        }else if(textFromUser.equals("/start") || textFromUser.equals("Начать новую игру")){
             textFromBot = "Новая игра началась, выберите дальнейшее действие!";
+        }else if(textFromUser.equals("/neutral")){
+            textFromBot = "Приключение началось, выберите дальнейшее действие!";
+        }else if(textFromUser.equals("/rest")){
+            textFromBot = "Даже самым лучшим войнам нужен отдых, выберите дальнейшее действие!";
+        }else if(textFromUser.equals("/battle")){
+            textFromBot = "Наконец-то достойный противник, эта схватка будет легендарной! Выберите дальнейщее действие!";
         }else{
             textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
         }
