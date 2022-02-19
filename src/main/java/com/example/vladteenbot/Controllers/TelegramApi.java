@@ -39,6 +39,7 @@ public class TelegramApi {
                     default:
                         textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
                 }
+                break;
             case "Нейтральный режим":
                 switch (textFromUser){
                     case "/rest":
@@ -60,6 +61,7 @@ public class TelegramApi {
                         textFromBot = "Не понятно, что вы от меня хотите! Напишите /rest для отдыха, /battle для вступления в бой," +
                                       "/info для информации о персонаже";
                 }
+                break;
             case "Режим отдыха":
                 switch (textFromUser){
                     case "/finish_rest":
@@ -76,6 +78,7 @@ public class TelegramApi {
                         textFromBot = "Не понятно, что вы от меня хотите! Напишите /finish_rest для завершения отдыха, " +
                                 "/info для информации о персонаже";
                 }
+                break;
             case "Режим боя":
                 switch (textFromUser){
                     case "/battle":
