@@ -115,18 +115,18 @@ public class TelegramApi {
         // Создаём объект с типом сообщение от бота
         var requestSendMessage = new SendMessage(chatId,textFromBot);
 
-        if (textFromUser.equals("/start") || textFromUser.equals("Начать новую игру")){
+        if (textFromUser.equals("/start")){
             var keyboard = GetKeyboardForStart();
             requestSendMessage.replyMarkup(keyboard);
-        }else if (textFromUser.equals("/neutral") || textFromUser.equals("Нейтральный режим")){
-            var keyboard = GetKeyboardForNeutral();
-            requestSendMessage.replyMarkup(keyboard);
-        }else if (textFromUser.equals("/rest") || textFromUser.equals("Режим отдыха")){
-            var keyboard = GetKeyboardForRest();
-            requestSendMessage.replyMarkup(keyboard);
-        }else if (textFromUser.equals("/battle") || textFromUser.equals("Режим боя")){
-            var keyboard = GetKeyboardForBattle();
-            requestSendMessage.replyMarkup(keyboard);
+//        }else if (textFromUser.equals("/neutral") || textFromUser.equals("Нейтральный режим")){
+//            var keyboard = GetKeyboardForNeutral();
+//            requestSendMessage.replyMarkup(keyboard);
+//        }else if (textFromUser.equals("/rest") || textFromUser.equals("Режим отдыха")){
+//            var keyboard = GetKeyboardForRest();
+//            requestSendMessage.replyMarkup(keyboard);
+//        }else if (textFromUser.equals("/battle") || textFromUser.equals("Режим боя")){
+//            var keyboard = GetKeyboardForBattle();
+//            requestSendMessage.replyMarkup(keyboard);
         }else{
             textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
         }
