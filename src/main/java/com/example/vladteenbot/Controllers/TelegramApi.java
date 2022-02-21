@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TelegramApi {
     TelegramBot bot = new TelegramBot(System.getenv("BOT_TOKEN"));
-    String state;
+    String state = "";
 
     @RequestMapping("/telegramApi")
     public void telegram(@RequestBody String request)
@@ -30,6 +30,7 @@ public class TelegramApi {
 
         switch (state){
             case "Новая игра":
+            default:
                 switch (textFromUser){
                     case "/start":
                     case "Начать новую игру":
@@ -97,21 +98,6 @@ public class TelegramApi {
                 break;
         }
 
-
-//        if (textFromUser.equals("Привет")){
-//            textFromBot = "Добро пожаловать, " + userName;
-//        }else if(textFromUser.equals("/start") || textFromUser.equals("Начать новую игру")){
-//            textFromBot = "Новая игра началась, выберите дальнейшее действие!";
-//        }else if(textFromUser.equals("/neutral")){
-//            textFromBot = "Приключение началось, выберите дальнейшее действие!";
-//        }else if(textFromUser.equals("/rest")){
-//            textFromBot = "Даже самым лучшим войнам нужен отдых, выберите дальнейшее действие!";
-//        }else if(textFromUser.equals("/battle")){
-//            textFromBot = "Наконец-то достойный противник, эта схватка будет легендарной! Выберите дальнейщее действие!";
-//        }else{
-//            textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
-//        }
-
         // Создаём объект с типом сообщение от бота
         var requestSendMessage = new SendMessage(chatId,textFromBot);
 
@@ -132,19 +118,6 @@ public class TelegramApi {
         }
 
         bot.execute(requestSendMessage);
-
-//        var sendMessageRequest = new SendMessage(update.message().chat().id(), "привет, " + update.message().from().firstName())
-//        .replyToMessageId(update.message().messageId());
-//        var sendMessageResponse = bot.execute(sendMessageRequest);
-//        var response = BotUtils.toJson(sendMessageResponse);
-//        switch (update.message().messageId()){
-//            case "/start":
-//                var sendMessage = new SendMessage(update.message().chat().id(), "привет, " + update.message().from().firstName())
-//                        .replyToMessageId(update.message().messageId());
-//        }
-//        System.out.println("Ответ на метод sendMessage:");
-//        System.out.println(response);
-
     }
 
     private Keyboard GetKeyboardForStart(){
