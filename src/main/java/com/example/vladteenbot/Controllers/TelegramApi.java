@@ -31,15 +31,7 @@ public class TelegramApi {
         switch (state){
             case "Новая игра":
             default:
-                switch (textFromUser){
-                    case "/start":
-                    case "Начать новую игру":
-                        textFromBot = "Новая игра началась, выберите дальнейшее действие!";
-                        state = "Нейтральный режим";
-                        break;
-                    default:
-                        textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
-                }
+                StatusForNewGame(textFromUser, textFromBot);
                 break;
             case "Нейтральный режим":
                 switch (textFromUser){
@@ -118,6 +110,18 @@ public class TelegramApi {
         }
 
         bot.execute(requestSendMessage);
+    }
+
+    private void StatusForNewGame(String textFromUser, String textFromBot) {
+        switch (textFromUser){
+            case "/start":
+            case "Начать новую игру":
+                textFromBot = "Новая игра началась, выберите дальнейшее действие!";
+                state = "Нейтральный режим";
+                break;
+            default:
+                textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
+        }
     }
 
     private Keyboard GetKeyboardForStart(){
