@@ -40,13 +40,6 @@ public class TelegramApi {
                 StatusForBattle(chatId, textFromUser, textFromBot, userName);
                 break;
         }
-
-        // Создаём объект с типом сообщение от бота
-//        var requestSendMessage = new SendMessage(chatId,textFromBot);
-//        textFromBot = "Не понятно, что вы от меня хотите! Напишите /start для начала новой игры";
-//
-//
-//        bot.execute(requestSendMessage);
     }
 
     private void StatusForNewGame(long chatId,String textFromUser, String textFromBot) {
@@ -72,6 +65,7 @@ public class TelegramApi {
         requestSendMessage.replyMarkup(keyboard);
         bot.execute(requestSendMessage);
     }
+
 
     private void RestartActionOnStatusForNewGame(long chatId) {
         var textFromBot = "Вы выбрали рестарт, игра возвращена в начальное состояние, выберите дальнейшее действие!";
@@ -243,10 +237,10 @@ public class TelegramApi {
         bot.execute(requestSendMessage);
     }
 
-
     private Keyboard GetKeyboardForStart(){
         // Создаём объект с типом клавиатура
-        var keyboard = new ReplyKeyboardMarkup(new String[]{"Начать новую игру", "Рестарт"});
+        var buttons = new String[]{"Начать новую игру", "Рестарт"};
+        var keyboard = new ReplyKeyboardMarkup(buttons);
         keyboard.oneTimeKeyboard(true);
         keyboard.resizeKeyboard(true);
         return keyboard;
@@ -263,14 +257,16 @@ public class TelegramApi {
     }
     private Keyboard GetKeyboardForRest(){
         // Создаём объект с типом клавиатура
-        var keyboard = new ReplyKeyboardMarkup(new String[]{"Закончить отдых", "Персонаж"});
+        var buttons = new String[]{"Закончить отдых", "Персонаж"};
+        var keyboard = new ReplyKeyboardMarkup(buttons);
         keyboard.oneTimeKeyboard(true);
         keyboard.resizeKeyboard(true);
         return keyboard;
     }
     private Keyboard GetKeyboardForBattle(){
         // Создаём объект с типом клавиатура
-        var keyboard = new ReplyKeyboardMarkup(new String[]{"Ударить и победить", "Ударить и проиграть", "Ударить и оба выжили"});
+        var buttons = new String[]{"Ударить и победить", "Ударить и проиграть", "Ударить и оба выжили"};
+        var keyboard = new ReplyKeyboardMarkup(buttons);
         keyboard.oneTimeKeyboard(true);
         keyboard.resizeKeyboard(true);
         return keyboard;
